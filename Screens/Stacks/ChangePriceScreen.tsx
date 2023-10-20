@@ -1,12 +1,14 @@
-import { StyleSheet, KeyboardAvoidingView, View } from 'react-native';
 import React from 'react';
-import InputWithLabel from '../../components/InputWithLabel/InputWithLabel';
-import StartScanContainer from '../../components/StartScanContainer/StartScanContainer';
+import { StyleSheet, View } from 'react-native';
+
 import ButtonFull from '../../components/ButtonFull/ButtonFull';
-import { H2, P } from '../../components/Typography/Typography';
-import ProductFound from '../../components/ProductFound/ProductFound';
+import InputWithLabel from '../../components/InputWithLabel/InputWithLabel';
 import Input from '../../components/Input/Input';
 import InputContainer from '../../components/InputContainer/InputContainer';
+import ProductFound from '../../components/ProductFound/ProductFound';
+import StartScanContainer from '../../components/StartScanContainer/StartScanContainer';
+
+import { H2 } from '../../components/Typography/Typography';
 
 const ChangePriceScreen = () => {
   return (

@@ -5,9 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArchiveRestore, ArchiveX, Archive } from 'lucide-react-native';
-import { COLORS } from '../../CONSTANTS/CONSTANTS';
-import { H1, P, H2 } from '../../components/Typography/Typography';
 import ScreenTitle from '../../components/ScreenTitle/ScreenTitle';
+import { COLORS } from '../../CONSTANTS/CONSTANTS';
+import { P, H2 } from '../../components/Typography/Typography';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -40,14 +40,14 @@ const HomeScreen = () => {
             style={styles.upper}
             onPress={() => navigation.navigate('DeleteProductScreen')}
           >
-            <ArchiveRestore size={24} color={COLORS.WHITE} />
+            <ArchiveX size={24} color={COLORS.WHITE} />
             <H2 color={COLORS.WHITE}>Delete Product</H2>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.lower}
-            onPress={() => navigation.navigate('ChnageProudctPriceScreen')}
+            onPress={() => navigation.navigate('ChangeProductPriceScreen')}
           >
-            <ArchiveRestore size={24} color={COLORS.WHITE} />
+            <Archive size={24} color={COLORS.WHITE} />
             <H2 color={COLORS.WHITE}>Change Price</H2>
           </TouchableOpacity>
           {/* 2nd child */}

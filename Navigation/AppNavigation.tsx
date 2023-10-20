@@ -1,17 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Tabs from '../Screens/Tabs/TabNavigation';
 import AddProductScreen from '../Screens/Stacks/AddProductScreen';
-import { FONT_FAMILY } from '../CONSTANTS/CONSTANTS';
 import DeleteProductScreen from '../Screens/Stacks/DeleteProductScreen';
 import ChangePriceScreen from '../Screens/Stacks/ChangePriceScreen';
+import { FONT_FAMILY } from '../CONSTANTS/CONSTANTS';
 
-const Stack = createNativeStackNavigator();
+// Define common stack screen options
+// for consistent styling and configuration.
 
-// below function is used in stack screen
 const commonStackScreenOptions = (screenTitle: string) => ({
   title: screenTitle,
   headerTitleStyle: {
@@ -20,6 +20,8 @@ const commonStackScreenOptions = (screenTitle: string) => ({
   },
   headerShadowVisible: false,
 });
+
+const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => {
   return (
@@ -41,7 +43,7 @@ const AppNavigation = () => {
           options={commonStackScreenOptions('Delete Product')}
         />
         <Stack.Screen
-          name="ChnageProudctPriceScreen"
+          name="ChangeProductPriceScreen"
           component={ChangePriceScreen}
           options={commonStackScreenOptions('Change Price')}
         />
@@ -51,5 +53,3 @@ const AppNavigation = () => {
 };
 
 export default AppNavigation;
-
-const styles = StyleSheet.create({});

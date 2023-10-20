@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import Alert from '../../components/Alert/Alert';
+import AlertMessage from '../../components/AlertMessage/AlertMessage';
+import AlertButton from '../../components/AlertButton/AlertButton';
 import InputWithLabel from '../../components/InputWithLabel/InputWithLabel';
 import StartScanContainer from '../../components/StartScanContainer/StartScanContainer';
-import Alert from '../../components/Alert/Alert';
-import { BadgeAlert } from 'lucide-react-native';
-import { H2, P } from '../../components/Typography/Typography';
-import AlertButton from '../../components/AlertButton/AlertButton';
+
 import { COLORS } from '../../CONSTANTS/CONSTANTS';
 import { ALertIcon } from '../../components/Icons/Icons';
-import AlertMessage from '../../components/AlertMessage/AlertMessage';
 
 const DeleteProductScreen = () => {
   return (

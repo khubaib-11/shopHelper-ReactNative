@@ -1,10 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import { COLORS } from '../../CONSTANTS/CONSTANTS';
-import { P } from '../../components/Typography/Typography';
 import InputWithLabel from '../../components/InputWithLabel/InputWithLabel';
-import ScanButton from '../../components/ScanButton/ScanButton';
 import StartScanContainer from '../../components/StartScanContainer/StartScanContainer';
 import ButtonFull from '../../components/ButtonFull/ButtonFull';
 
