@@ -39,6 +39,9 @@ const TabNavigation = () => {
         component={ScanScreen}
         options={{
           tabBarIcon: ({ color }) => <Camera size={24} color={color} />,
+          unmountOnBlur: true,
+          headerShown: false,
+          tabBarStyle: { display: 'none' },
           tabBarLabelStyle: {
             fontSize: 12,
             fontFamily: FONT_FAMILY.MEDIUM,

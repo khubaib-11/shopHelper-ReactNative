@@ -55,7 +55,7 @@ const PriceListScreen = () => {
       </Message> */}
 
       {/* If there are  products added in store show products  component */}
-      {/* <View style={styles.list}>
+      <View style={styles.list}>
         <FlashList
           data={productsArray}
           estimatedItemSize={200}
@@ -68,7 +68,7 @@ const PriceListScreen = () => {
             />
           )}
         />
-      </View> */}
+      </View>
     </SafeAreaView>
   );
 };

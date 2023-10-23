@@ -8,9 +8,11 @@ const AlertButton = ({
   textColor = COLORS.BLACK,
   background = '#fff',
   border = COLORS.BLACK,
+  onPress,
 }) => {
   return (
     <TouchableOpacity
+      onPress={onPress}
       style={{
         backgroundColor: background,
         borderWidth: 1,

@@ -14,7 +14,7 @@ const PriceListProduct = ({ name, price, barcode }: Props) => {
     <View style={styles.productContainer}>
       <H2>{name}</H2>
       <View style={styles.pricingContainer}>
-        <H2>|</H2>
+        <H2>==</H2>
         <H2 color={COLORS.WARNING}>{price}</H2>
       </View>
     </View>

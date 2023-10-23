@@ -8,6 +8,8 @@ import AddProductScreen from '../Screens/Stacks/AddProductScreen';
 import DeleteProductScreen from '../Screens/Stacks/DeleteProductScreen';
 import ChangePriceScreen from '../Screens/Stacks/ChangePriceScreen';
 import { FONT_FAMILY } from '../CONSTANTS/CONSTANTS';
+import CartScreen from '../Screens/Stacks/CartScreen';
+import BillScreen from '../Screens/Stacks/BillScreen';
 
 // Define common stack screen options
 // for consistent styling and configuration.
@@ -46,6 +48,16 @@ const AppNavigation = () => {
           name="ChangeProductPriceScreen"
           component={ChangePriceScreen}
           options={commonStackScreenOptions('Change Price')}
+        />
+        <Stack.Screen
+          name="CartScreen"
+          component={CartScreen}
+          options={commonStackScreenOptions('Cart')}
+        />
+        <Stack.Screen
+          name="BillScreen"
+          component={BillScreen}
+          options={commonStackScreenOptions('Bill')}
         />
       </Stack.Navigator>
     </NavigationContainer>
