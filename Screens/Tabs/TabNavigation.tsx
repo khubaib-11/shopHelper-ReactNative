@@ -23,11 +23,12 @@ const TabNavigation = () => {
       }}
     >
       <Tabs.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <Home size={24} color={color} />,
+          tabBarLabel: 'Home',
           tabBarLabelStyle: {
             fontSize: 12,
             fontFamily: FONT_FAMILY.MEDIUM,
@@ -35,10 +36,11 @@ const TabNavigation = () => {
         }}
       />
       <Tabs.Screen
-        name="Scan"
+        name="ScanScreen"
         component={ScanScreen}
         options={{
           tabBarIcon: ({ color }) => <Camera size={24} color={color} />,
+          tabBarLabel: 'Scan',
           unmountOnBlur: true,
           headerShown: false,
           tabBarStyle: { display: 'none' },
@@ -49,11 +51,12 @@ const TabNavigation = () => {
         }}
       />
       <Tabs.Screen
-        name="Price List"
+        name="PriceListScreen"
         component={PriceListScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <ScrollText size={24} color={color} />,
+          tabBarLabel: 'Price List',
           tabBarLabelStyle: {
             fontSize: 12,
             fontFamily: FONT_FAMILY.MEDIUM,

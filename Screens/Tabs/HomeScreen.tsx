@@ -1,19 +1,32 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import * as FileSystem from 'expo-file-system';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArchiveRestore, ArchiveX, Archive } from 'lucide-react-native';
 import ScreenTitle from '../../components/ScreenTitle/ScreenTitle';
-import { COLORS } from '../../CONSTANTS/CONSTANTS';
+import { COLORS, FILE_CONSTANTS } from '../../CONSTANTS/CONSTANTS';
 import { P, H2 } from '../../components/Typography/Typography';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+
+  async function handleDeleteAllProducts() {
+    try {
+      await FileSystem.writeAsStringAsync(
+        FILE_CONSTANTS.appDataDirectory + FILE_CONSTANTS.productsFile,
+        ''
+      );
+    } catch (error) {
+      console.log(error, 'Failed to delete all products');
+    }
+  }
+
   return (
     <SafeAreaView style={{ paddingVertical: 16, paddingHorizontal: 20 }}>
-      <ScreenTitle>How can I help?</ScreenTitle>
+      <ScreenTitle>Home</ScreenTitle>
 
       {/* Gradient buttons */}
       <View style={styles.homeNavigation}>

@@ -14,25 +14,12 @@ import { Store } from 'lucide-react-native';
 import PriceListProduct from '../../components/PriceListProduct/PriceListProduct';
 import AddSpacingInLists from '../../components/AddSpacingInLists/AddSpacingInLists';
 
+import { useFileData } from '../../context/FileDataContext';
+
 const PriceListScreen = () => {
-  // ? Remove this array when you start reading from file, its just placeholder for flash list
-  const productsArray = [
-    {
-      name: 'Milk Pack',
-      price: 70,
-      barcode: 12146464,
-    },
-    {
-      name: 'Coca Cola',
-      price: 180,
-      barcode: 5454644,
-    },
-    {
-      name: 'Super Biscuit',
-      price: 80,
-      barcode: 46798797,
-    },
-  ];
+  const { storeProducts } = useFileData();
+  const storeHasProducts = storeProducts.length > 0;
+
   return (
     <SafeAreaView
       style={{
@@ -49,26 +36,30 @@ const PriceListScreen = () => {
       </InputContainer>
 
       {/* If there are no products added in store show message component */}
-      {/* <Message>
-        <Store size={48} color={COLORS.BLACK} strokeWidth={1.5} />
-        <H2>Your store is empty. Please add products to see prices here.</H2>
-      </Message> */}
+      {!storeHasProducts && (
+        <Message>
+          <Store size={48} color={COLORS.BLACK} strokeWidth={1.5} />
+          <H2>Your store is empty. Please add products to see prices here.</H2>
+        </Message>
+      )}
 
       {/* If there are  products added in store show products  component */}
-      <View style={styles.list}>
-        <FlashList
-          data={productsArray}
-          estimatedItemSize={200}
-          ItemSeparatorComponent={AddSpacingInLists}
-          renderItem={({ item }) => (
-            <PriceListProduct
-              name={item.name}
-              price={item.price}
-              barcode={item.barcode}
-            />
-          )}
-        />
-      </View>
+      {storeHasProducts && (
+        <View style={styles.list}>
+          <FlashList
+            data={storeProducts}
+            estimatedItemSize={200}
+            ItemSeparatorComponent={AddSpacingInLists}
+            renderItem={({ item }) => (
+              <PriceListProduct
+                name={item.name}
+                price={item.price}
+                barcode={item.barcode}
+              />
+            )}
+          />
+        </View>
+      )}
     </SafeAreaView>
   );
 };

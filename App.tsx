@@ -2,6 +2,9 @@ import { useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 
+// Context
+import { FileDataProvider } from './context/FileDataContext';
+
 // Load Font
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -29,8 +32,10 @@ export default function App() {
 
   return (
     <View onLayout={onLayoutRootView} style={styles.container}>
-      <AppNavigation />
-      <StatusBar style="auto" />
+      <FileDataProvider>
+        <AppNavigation />
+        <StatusBar style="auto" />
+      </FileDataProvider>
     </View>
   );
 }

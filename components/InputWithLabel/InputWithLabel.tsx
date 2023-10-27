@@ -8,12 +8,19 @@ const InputWithLabel = ({
   label = '⚠️ No label',
   placeholder = '⚠️ No placeholder',
   editable = true,
+  value,
+  handleChange,
 }) => {
   return (
     <View style={styles.container}>
       <P>{label}</P>
       <InputContainer>
-        <Input placeholder={placeholder} editable={editable} />
+        <Input
+          placeholder={placeholder}
+          editable={editable}
+          value={value}
+          handleChange={handleChange}
+        />
       </InputContainer>
     </View>
   );

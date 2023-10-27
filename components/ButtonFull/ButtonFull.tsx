@@ -3,9 +3,13 @@ import React from 'react';
 import { H2 } from '../Typography/Typography';
 import { COLORS } from '../../CONSTANTS/CONSTANTS';
 
-const ButtonFull = ({ children }) => {
+const ButtonFull = ({ children, onPress, disabled }) => {
   return (
-    <TouchableOpacity style={styles.btn}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.btn, disabled && styles.inactive]}
+      disabled={disabled}
+    >
       <H2 color={COLORS.WHITE}>{children}</H2>
     </TouchableOpacity>
   );
@@ -21,5 +25,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 6,
+  },
+
+  inactive: {
+    backgroundColor: '#00000066',
   },
 });

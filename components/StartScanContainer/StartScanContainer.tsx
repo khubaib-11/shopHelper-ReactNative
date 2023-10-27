@@ -4,9 +4,9 @@ import ScanButton from '../ScanButton/ScanButton';
 import { COLORS } from '../../CONSTANTS/CONSTANTS';
 import { P } from '../Typography/Typography';
 
-const StartScanContainer = () => {
+const StartScanContainer = ({ onPress }) => {
   return (
-    <TouchableOpacity style={styles.scanContainer}>
+    <TouchableOpacity style={styles.scanContainer} onPress={onPress}>
       <ScanButton />
       <P color={COLORS.INACTIVE}>Press here to scan barcode</P>
     </TouchableOpacity>

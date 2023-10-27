@@ -4,22 +4,33 @@ import { H2, P } from '../Typography/Typography';
 import { COLORS } from '../../CONSTANTS/CONSTANTS';
 import AlertButton from '../AlertButton/AlertButton';
 
-const ProductFound = () => {
+const ProductFound = ({
+  border = COLORS.BLACK,
+  background = COLORS.BLACK,
+  textColor = COLORS.WHITE,
+  btnText = '⚠️ No text',
+  prompt = '⚠️ No message',
+  onPressConfirm,
+  onPressCancel,
+}) => {
   return (
     <View style={styles.card}>
       <View>
         <H2>Coca Cola</H2>
         <P>Barcode: 14654646464</P>
       </View>
-      <P>Do you want to delete this coca cola from your store?</P>
+      <P>{prompt}</P>
       <View style={styles.cardBtns}>
-        <AlertButton border={COLORS.ALERT}>Go Back</AlertButton>
+        <AlertButton border={COLORS.ALERT} onPress={onPressCancel}>
+          Go Back
+        </AlertButton>
         <AlertButton
-          border={COLORS.ALERT}
-          background={COLORS.ALERT}
-          textColor={COLORS.WHITE}
+          border={border}
+          background={background}
+          textColor={textColor}
+          onPress={onPressConfirm}
         >
-          Yes, change price
+          {btnText}
         </AlertButton>
       </View>
     </View>

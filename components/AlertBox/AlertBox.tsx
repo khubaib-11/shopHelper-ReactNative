@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const Alert = ({ children }) => {
+const AlertBox = ({ children }) => {
   return (
     <View style={[StyleSheet.absoluteFill]}>
       <View
@@ -28,6 +28,6 @@ const Alert = ({ children }) => {
   );
 };
 
-export default Alert;
+export default AlertBox;
 
 const styles = StyleSheet.create({});

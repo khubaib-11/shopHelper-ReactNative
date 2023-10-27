@@ -1,3 +1,11 @@
+import * as FileSystem from 'expo-file-system'; // used for files system access
+
+export const FILE_CONSTANTS = {
+  // directory where all data will be stored, all files should be inside of appDataDirectory folder
+  appDataDirectory: `${FileSystem.documentDirectory}appDataDirectory/`,
+  productsFile: 'products.json',
+};
+
 export const COLORS = {
   BLACK: '#2F3640',
   WHITE: '#F5F6FA',

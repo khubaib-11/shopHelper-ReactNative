@@ -5,6 +5,8 @@ import { FONT_FAMILY } from '../../CONSTANTS/CONSTANTS';
 const Input = ({
   placeholder = '⚠️ No placeholder provided',
   editable = true,
+  value,
+  handleChange,
 }) => {
   return (
     <TextInput
@@ -12,6 +14,8 @@ const Input = ({
       style={styles.input}
       autoCorrect
       editable={editable}
+      value={value}
+      onChangeText={(val) => handleChange(val)}
     />
   );
 };
