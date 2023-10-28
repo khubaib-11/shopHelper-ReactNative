@@ -55,7 +55,7 @@ const FileDataProvider = ({ children }) => {
     }
 
     readProductsFromLocalFile();
-  }, [storeProducts]);
+  }, []);
 
   // DOnt call this functions directly
   const saveDataToFile = (

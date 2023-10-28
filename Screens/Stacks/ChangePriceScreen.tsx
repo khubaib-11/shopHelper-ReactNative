@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, View, Alert } from 'react-native';
-import * as FileSystem from 'expo-file-system';
 
 import InputWithLabel from '../../components/InputWithLabel/InputWithLabel';
 import Input from '../../components/Input/Input';
@@ -12,7 +11,7 @@ import { H2 } from '../../components/Typography/Typography';
 import { ArrowLeft } from 'lucide-react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useFileData } from '../../context/FileDataContext';
-import { COLORS, FILE_CONSTANTS } from '../../CONSTANTS/CONSTANTS';
+import { COLORS } from '../../CONSTANTS/CONSTANTS';
 import AlertBox from '../../components/AlertBox/AlertBox';
 import { ALertIcon } from '../../components/Icons/Icons';
 import AlertMessage from '../../components/AlertMessage/AlertMessage';

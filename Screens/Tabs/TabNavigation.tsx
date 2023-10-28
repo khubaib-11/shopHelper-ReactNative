@@ -54,6 +54,7 @@ const TabNavigation = () => {
         name="PriceListScreen"
         component={PriceListScreen}
         options={{
+          unmountOnBlur: true,
           headerShown: false,
           tabBarIcon: ({ color }) => <ScrollText size={24} color={color} />,
           tabBarLabel: 'Price List',

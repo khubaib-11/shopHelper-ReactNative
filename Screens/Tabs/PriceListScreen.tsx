@@ -1,9 +1,9 @@
-import { StyleSheet, TextInput, View } from 'react-native';
-import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ScreenTitle from '../../components/ScreenTitle/ScreenTitle';
 import { Search } from 'lucide-react-native';
-import { COLORS, FONT_FAMILY } from '../../CONSTANTS/CONSTANTS';
+import { COLORS } from '../../CONSTANTS/CONSTANTS';
 import { FlashList } from '@shopify/flash-list';
 
 import InputContainer from '../../components/InputContainer/InputContainer';
@@ -30,10 +30,14 @@ const PriceListScreen = () => {
       }}
     >
       <ScreenTitle>Price List</ScreenTitle>
-      <InputContainer>
+      {/* <InputContainer>
         <Search size={24} color={COLORS.INACTIVE} />
-        <Input placeholder="Search products" />
-      </InputContainer>
+        <Input
+          placeholder="Search products"
+          value={searchQuery}
+          handleChange={handleSearchQuery}
+        />
+      </InputContainer> */}
 
       {/* If there are no products added in store show message component */}
       {!storeHasProducts && (
