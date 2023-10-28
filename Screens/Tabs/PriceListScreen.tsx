@@ -20,6 +20,28 @@ const PriceListScreen = () => {
   const { storeProducts } = useFileData();
   const storeHasProducts = storeProducts.length > 0;
 
+  // search query state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchedProducts, setSearchedProducts] = useState([]);
+
+  function handleSearch(query) {
+    setSearchQuery(query);
+  }
+
+  useEffect(() => {
+    // if search query is empty
+    if (searchQuery.trim().length < 0) {
+      setSearchedProducts([...storeProducts]);
+    } else {
+      console.log(searchQuery);
+      const filteredProducts = storeProducts.filter((p) =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      setSearchedProducts(filteredProducts);
+    }
+  }, [searchQuery]);
+
   return (
     <SafeAreaView
       style={{
@@ -30,14 +52,14 @@ const PriceListScreen = () => {
       }}
     >
       <ScreenTitle>Price List</ScreenTitle>
-      {/* <InputContainer>
+      <InputContainer>
         <Search size={24} color={COLORS.INACTIVE} />
         <Input
           placeholder="Search products"
           value={searchQuery}
-          handleChange={handleSearchQuery}
+          handleChange={handleSearch}
         />
-      </InputContainer> */}
+      </InputContainer>
 
       {/* If there are no products added in store show message component */}
       {!storeHasProducts && (
@@ -51,7 +73,7 @@ const PriceListScreen = () => {
       {storeHasProducts && (
         <View style={styles.list}>
           <FlashList
-            data={storeProducts}
+            data={searchedProducts}
             estimatedItemSize={200}
             ItemSeparatorComponent={AddSpacingInLists}
             renderItem={({ item }) => (
