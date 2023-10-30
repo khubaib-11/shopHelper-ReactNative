@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FlashList } from '@shopify/flash-list';
+import { useRoute } from '@react-navigation/native';
 
 import AlertButton from '../../components/AlertButton/AlertButton';
 import { COLORS } from '../../CONSTANTS/CONSTANTS';
@@ -10,11 +11,42 @@ import CartItem from '../../components/CartItem/CartItem';
 import AddSpacingInLists from '../../components/AddSpacingInLists/AddSpacingInLists';
 
 const CartScreen = () => {
-  // ? Delete this dummy array and replace real one coming from file
-  const products = [
-    { name: 'Milk Pack', price: 70, quantity: 8, barcode: 546465 },
-    { name: 'Coca Cola', price: 180, quantity: 5, barcode: 46464446 },
-  ];
+  const { params: products } = useRoute();
+
+  console.log(products);
+
+  // create a new state for products, it will be used to change quantity
+  const [cartProducts, setCartProducts] = useState([...products]);
+
+  function handleCartUpdate(barcode, action) {
+    const updatedCart = cartProducts.map((item) => {
+      // Find the item in the cart
+      if (item.barcode === barcode) {
+        if (action === 'increment') {
+          // Increment the quantity
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        if (action === 'decrement' && item.quantity > 0) {
+          // Decrement the quantity (if it's greater than 1)
+          return { ...item, quantity: item.quantity - 1 };
+        } else {
+          return { ...item };
+        }
+      } else {
+        return { ...item };
+      }
+    });
+    // Update the cart state
+    setCartProducts(updatedCart);
+  }
+
+  console.log(cartProducts);
+
+  const bill = cartProducts.reduce(
+    (acc, product) => acc + product.price * product.quantity,
+    0
+  );
+
   return (
     <View
       style={{ flex: 1, paddingHorizontal: 20, paddingVertical: 16, gap: 16 }}
@@ -31,32 +63,38 @@ const CartScreen = () => {
       </View>
 
       <FlashList
-        data={products}
+        data={cartProducts}
         estimatedItemSize={20}
         ItemSeparatorComponent={AddSpacingInLists}
-        renderItem={({ item }) => <CartItem item={item} />}
+        renderItem={({ item }) => (
+          <CartItem
+            item={item}
+            wholeCart={cartProducts}
+            handleCartUpdate={handleCartUpdate}
+          />
+        )}
       />
 
       {/* Total */}
-      <TotalAmount />
+      <TotalAmount bill={bill} />
     </View>
   );
 };
 
-function TotalAmount() {
+function TotalAmount({ bill }) {
   const navigation = useNavigation();
   return (
     <View style={styles.billWrapper}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
         <P>Total =</P>
-        <H1>2570</H1>
+        <H1>{bill}</H1>
       </View>
       <View>
         <AlertButton
           border={COLORS.SUCCESS}
           background={COLORS.SUCCESS}
           textColor={COLORS.WHITE}
-          onPress={() => navigation.navigate('BillScreen')}
+          onPress={() => navigation.navigate('BillScreen', bill)}
         >
           Pay Bill
         </AlertButton>

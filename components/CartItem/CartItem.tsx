@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { H2, P } from '../Typography/Typography';
 import { COLORS } from '../../CONSTANTS/CONSTANTS';
 import { Minus, Plus } from 'lucide-react-native';
 import SquareBackgroundContainer from '../SquareBackgroundContainer/SquareBackgroundContainer';
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, handleCartUpdate }) => {
   return (
     <View style={styles.productWrapper}>
       <View>
@@ -14,15 +14,19 @@ const CartItem = ({ item }) => {
       <View>
         <P color={COLORS.BLACK}>
           {' '}
-          {item.price} * 8= {560}
+          {item.price} * {item.quantity}= {item.price * item.quantity}
         </P>
       </View>
       <View style={styles.productQuantityWrapper}>
-        <SquareBackgroundContainer>
+        <SquareBackgroundContainer
+          onPress={() => handleCartUpdate(item.barcode, 'decrement')}
+        >
           <Minus size={20} color={COLORS.WHITE} />
         </SquareBackgroundContainer>
         <P color={COLORS.BLACK}>{item.quantity}</P>
-        <SquareBackgroundContainer>
+        <SquareBackgroundContainer
+          onPress={() => handleCartUpdate(item.barcode, 'increment')}
+        >
           <Plus size={20} color={COLORS.WHITE} />
         </SquareBackgroundContainer>
       </View>

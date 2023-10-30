@@ -3,9 +3,9 @@ import React from 'react';
 import { QrCode } from 'lucide-react-native';
 import { COLORS } from '../../CONSTANTS/CONSTANTS';
 
-const ScanButton = () => {
+const ScanButton = ({ onPress }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.btnContainer}>
         <QrCode color={COLORS.WHITE} size={24} />
       </View>

@@ -7,6 +7,7 @@ const Input = ({
   editable = true,
   value,
   handleChange,
+  keyboardType = 'default',
 }) => {
   return (
     <TextInput
@@ -16,6 +17,7 @@ const Input = ({
       editable={editable}
       value={value}
       onChangeText={(val) => handleChange(val)}
+      keyboardType={keyboardType}
     />
   );
 };
