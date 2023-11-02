@@ -11,15 +11,25 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera for scanning barcode.",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.khubaib_11.shopHelper"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +41,11 @@
           "cameraPermission": "Allow $(PRODUCT_NAME) to access camera for scanning barcode."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "a5841f70-56cc-4f48-92db-adc99c4f4038"
+      }
+    }
   }
 }
