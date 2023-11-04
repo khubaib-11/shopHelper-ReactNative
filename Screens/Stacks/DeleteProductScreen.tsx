@@ -11,7 +11,7 @@ import { COLORS } from '../../CONSTANTS/CONSTANTS';
 import { ALertIcon } from '../../components/Icons/Icons';
 import { ArrowLeft } from 'lucide-react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import { H2 } from '../../components/Typography/Typography';
+import { H2, P } from '../../components/Typography/Typography';
 import { useFileData } from '../../context/FileDataContext';
 import ProductFound from '../../components/ProductFound/ProductFound';
 
@@ -42,8 +42,12 @@ const DeleteProductScreen = () => {
 
       {allowScanning && (
         <Modal>
-          <Pressable onPress={() => setAllowScanning(false)}>
+          <Pressable
+            style={styles.modal}
+            onPress={() => setAllowScanning(false)}
+          >
             <ArrowLeft size={24} color={COLORS.BLACK} />
+            <P>Back</P>
           </Pressable>
           <BarCodeScanner
             style={{ flex: 1 }}
@@ -128,5 +132,13 @@ const styles = StyleSheet.create({
   productFoundContainer: {
     marginTop: 24,
     gap: 8,
+  },
+
+  modal: {
+    paddingLeft: 16,
+    paddingTop: 16,
+    flexDirection: 'row',
+    gap: 8,
+    alignItems: 'center',
   },
 });

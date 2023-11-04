@@ -15,7 +15,11 @@ const BillScreen = () => {
   const [payment, setPayment] = useState(0);
 
   function handlePaymentChange(amount) {
-    setPayment(totalBill - Number(amount));
+    if (Number(amount) > totalBill) {
+      setPayment(totalBill - Number(amount));
+    } else {
+      setPayment(0);
+    }
   }
 
   return (
@@ -40,8 +44,9 @@ const BillScreen = () => {
         </InputContainer>
       </GradientCard>
       <GradientCard colorsArray={['#EAAFC8', '#654EA3']}>
-        <P color={COLORS.WHITE}>Refund Amount to Customer</P>
+        <P color={COLORS.WHITE}>Give this amount to Customer</P>
         <H1 color={COLORS.WHITE} fontSize={70}>
+          {/* only show amount to refund, if user payment is greater than bill*/}
           {payment}
         </H1>
       </GradientCard>

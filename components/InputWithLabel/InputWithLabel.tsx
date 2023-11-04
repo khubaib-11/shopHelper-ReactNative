@@ -10,6 +10,7 @@ const InputWithLabel = ({
   editable = true,
   value,
   handleChange,
+  keyboardType = 'default',
 }) => {
   return (
     <View style={styles.container}>
@@ -20,6 +21,7 @@ const InputWithLabel = ({
           editable={editable}
           value={value}
           handleChange={handleChange}
+          keyboardType={keyboardType}
         />
       </InputContainer>
     </View>

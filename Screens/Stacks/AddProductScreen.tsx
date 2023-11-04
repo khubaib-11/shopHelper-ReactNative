@@ -10,6 +10,7 @@ import ButtonFull from '../../components/ButtonFull/ButtonFull';
 import { COLORS, FILE_CONSTANTS } from '../../CONSTANTS/CONSTANTS';
 import { ArrowLeft } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
+import { P } from '../../components/Typography/Typography';
 
 const AddProductScreen = () => {
   const navigation = useNavigation();
@@ -39,6 +40,11 @@ const AddProductScreen = () => {
       barcode: productBarcode,
     };
     addNewProductInStore(newProduct);
+
+    // clear form fields
+    setProductName('');
+    setProductPrice('');
+    setProductBarcode('');
   }
 
   return (
@@ -55,6 +61,7 @@ const AddProductScreen = () => {
           handleChange={handlePriceChange}
           label="Product Price"
           placeholder="200"
+          keyboardType="numeric"
         />
         <InputWithLabel
           value={productBarcode}
@@ -72,8 +79,12 @@ const AddProductScreen = () => {
 
         {allowScanning && (
           <Modal>
-            <Pressable onPress={() => setAllowScanning(false)}>
+            <Pressable
+              style={styles.modal}
+              onPress={() => setAllowScanning(false)}
+            >
               <ArrowLeft size={24} color={COLORS.BLACK} />
+              <P>Back</P>
             </Pressable>
             <BarCodeScanner
               style={{ flex: 1 }}
@@ -111,5 +122,13 @@ const styles = StyleSheet.create({
   inputsContainer: {
     //  to move the bottom button at end
     flex: 1,
+  },
+
+  modal: {
+    paddingLeft: 16,
+    paddingTop: 16,
+    flexDirection: 'row',
+    gap: 8,
+    alignItems: 'center',
   },
 });
